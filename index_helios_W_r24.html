@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!-- Helios by HTML5 UP -->
+    <title>Helios by HTML5 UP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='assets/css/noscript.css') }}" /></noscript>
+</head>
+<body class="homepage is-preload">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <div id="header">
+            <div class="inner">
+                <header>
+                    <h1><a href="index.html" id="logo">Gavin Martin</a></h1>
+                    <p>Professional Coder</p>
+                </header>
+                <footer>
+                    <a href="#banner" class="button circled scrolly">Join Me</a>
+                </footer>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>
+                    <a href="#">Dropdown</a>
+                    <ul>
+                        <li><a href="#">Lorem ipsum dolor</a></li>
+                        <li><a href="#">Magna phasellus</a></li>
+                        <li><a href="#">Etiam dolore nisl</a></li>
+                        <li>
+                            <a href="#">And a submenu &hellip;</a>
+                            <ul>
+                                <li><a href="#">Lorem ipsum dolor</a></li>
+                                <li><a href="#">Phasellus consequat</a></li>
+                                <li><a href="#">Magna phasellus</a></li>
+                                <li><a href="#">Etiam dolore nisl</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Veroeros feugiat</a></li>
+                    </ul>
+                </li>
+                <li><a href="left-sidebar.html">Left Sidebar</a></li>
+                <li><a href="right-sidebar.html">Right Sidebar</a></li>
+                <li><a href="no-sidebar.html">No Sidebar</a></li>
+            </ul>
+        </nav>
+
+        <!-- Banner -->
+        <section id="banner">
+            <header>
+                <h4><strong>Greetings Traveler.</strong> You made it. We've been waiting for you...</h4>
+                <p>About Me:</p>
+            </header>
+        </section>
+
+        <!-- Profile Section -->
+        <section class="profile-section">
+            <div class="profile-container">
+                <div class="profile-photo">
+                    <img src="static/Screenshot 2024-04-01 202719squared3_Navy_border4.jpg" alt="Profile Image" />
+                </div>
+                <h3>Software Developer</h3>
+                <div class="social-links">
+                    <a href="https://github.com/Siris4/" class="icon brands fa-github">Github</a>
+                    <a href="https://www.linkedin.com/in/gmartin4/" class="icon brands fa-linkedin-in">LinkedIn</a>
+                    <a href="https://stackoverflow.com/users/24044381/gavin-martin" class="icon brands fa-stack-overflow">Stack Overflow</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer as Background Element -->
+    <div class="background-footer">
+        <div class="copyright">
+            <ul class="menu">
+                <li>&copy; Untitled. All rights reserved.</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.dropotron.min.js') }}"></script>
+    <script>
+        document.querySelector('.scrolly').addEventListener('click', function(e) {
+            e.preventDefault();
+            var targetId = this.getAttribute('href');
+            var targetElement = document.querySelector(targetId);
+
+            var startPosition = window.pageYOffset;
+            var targetPosition = targetElement.getBoundingClientRect().top;
+            var distance = targetPosition - startPosition;
+            var startTime = null;
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                var timeElapsed = currentTime - startTime;
+                var run = ease(timeElapsed, startPosition, distance, 2000);
+                window.scrollTo(0, run);
+                if (timeElapsed < 2000) requestAnimationFrame(animation);
+            }
+
+            function ease(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+
+            requestAnimationFrame(animation);
+        });
+    </script>
+</body>
+</html>
